@@ -1,42 +1,255 @@
-#root {
-  max-width: 1280px;
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;600;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Darker Grotesque', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.container {
+  width: 1560px;
+  min-width: 1560px;
   margin: 0 auto;
-  padding: 2rem;
+  height: 100%;
+}
+
+.container .row {
+  display: flex;
+  height: 100%;
+  padding: 0 32px;
+}
+
+.container .row.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.container .row.space-between {
+  justify-content: space-between;
+}
+
+/* Header styles */
+header {
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+
+header .logo,
+header .menu {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-top: 40px;
+}
+
+header a {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Home page styles */
+.image-container {
+  position: relative;
+  margin-top: 120px;
+}
+
+.thumbnail {
+  overflow: hidden;
+  position: relative;
+}
+
+.frame {
+  overflow: hidden;
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.information {
+  position: absolute;
+  bottom: -120px;
+  left: 0;
+  margin-top: 16px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.location {
+  display: flex;
+}
+
+.location span:nth-child(1) {
+  margin-right: 8px;
+}
+
+/* Model page styles */
+.single {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.single .fluid {
+  position: relative;
+  padding: 0;
+}
+
+.top-row {
+  height: 50vh;
+  position: relative;
+}
+
+.top {
+  padding-top: 100px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.top .details {
+  position: absolute;
+  left: 32px;
+  font-size: 1.2rem;
+}
+
+.top .details .location {
+  margin-bottom: 8px;
+}
+
+.top .details .mua {
+  font-weight: 600;
+}
+
+.model {
+  font-size: 7rem;
+  font-weight: 800;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.model span {
+  display: inline-block;
+  position: relative;
+}
+
+.model span span {
+  overflow: hidden;
+  position: relative;
+}
+
+.bottom-row {
+  height: 50vh;
+  position: relative;
+}
+
+.bottom {
+  width: 100%;
+  position: relative;
+}
+
+.image-container-single {
+  position: relative;
+  overflow: hidden;
+}
+
+.thumbnail-single {
+  position: relative;
+  overflow: hidden;
+}
+
+.frame-single {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.frame-single img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.scroll-for-more {
+  position: absolute;
+  bottom: 200px;
+  left: 200px;
+  z-index: 20;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.scroll-for-more .icon {
+  margin-bottom: 16px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.detailed-information {
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+
+.detailed-information .title {
+  font-size: 2rem;
+  line-height: 3rem;
+  font-weight: 600;
+  margin: 2rem 0;
+}
+
+.detailed-information p {
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  font-weight: 400;
+  width: 800px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1560px) {
+  .container {
+    width: 1280px;
+    min-width: 1280px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 1366px) {
+  .container {
+    width: 1080px;
+    min-width: 1080px;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 1080px) {
+  .container {
+    width: 100%;
+    min-width: 100%;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  .detailed-information p {
+    width: 100%;
+  }
 }

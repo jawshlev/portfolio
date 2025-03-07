@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import Home from './pages/Home';
+import Model from './pages/Model';
+import Header from './components/Header';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const imageDetails = {
+    width: 524,
+    height: 650,
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <Header />
+      <AnimatePresenceWrapper imageDetails={imageDetails} />
+    </BrowserRouter>
+  );
 }
 
-export default App
+// This wrapper is needed because useLocation must be used inside a Router
+function AnimatePresenceWrapper({ imageDetails }) {
+  const location = useLocation();
+  
+  return (
+    <AnimatePresence initial={false} mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home imageDetails={imageDetails} />} />
+        <Route path="/model/:id" element={<Model imageDetails={imageDetails} />} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
+export default App;
