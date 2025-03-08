@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
 
 * {
   box-sizing: border-box;
@@ -253,3 +254,4 @@ header a {
     width: 100%;
   }
 }
+

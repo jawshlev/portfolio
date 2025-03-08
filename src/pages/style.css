@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
+
+.box {
+    height: 1080px;
+    width: 1920px;
+}
+
+.box .entry-page {
+    height: 1080px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 1922px;
+}
+
+.box .overlap-group {
+    background: linear-gradient(
+        180deg,
+        rgb(142, 158, 171) 0%,
+        rgb(238, 242, 243) 100%
+    );
+    border: 1px solid;
+    border-color: #000000;
+    box-shadow: 0px 4px 4px #00000040;
+    height: 1080px;
+    position: relative;
+    width: 1920px;
+}
+
+.box .model {
+    height: 554px;
+    left: 585px;
+    object-fit: cover;
+    position: absolute;
+    top: 284px;
+    width: 738px;
+}
+
+.box .text-wrapper {
+    color: #000000;
+    font-family: "Libre Barcode 39 Text", Helvetica;
+    font-size: 59.1px;
+    font-weight: 400;
+    left: 585px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 838px;
+    white-space: nowrap;
+    width: 372px;
+}
