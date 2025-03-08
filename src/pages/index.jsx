@@ -84,13 +84,13 @@ export const Box = () => {
                                         alt="Model" 
                                         src={model}
                                         onClick={handleReset}
-                                        initial={{ 
+                                        initial={() => ({
                                             width: initialSize.width,
                                             height: initialSize.height,
                                             top: initialSize.top,
                                             left: initialSize.left,
                                             opacity: 1
-                                        }}
+                                        })}
                                         animate={{ 
                                             width: "100vw", 
                                             height: "50vh",
