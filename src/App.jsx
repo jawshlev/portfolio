@@ -1,14 +1,14 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Box } from './pages/index'; // Keep only Box component
+import { HashRouter, Routes, Route } from 'react-router-dom'; // ✅ Change to HashRouter
+import { Box } from './pages/index'; 
 import './App.css';
 
 function App() {
   return (
-    <BrowserRouter basename="/portfolio">
+    <HashRouter> {/* ✅ Change from BrowserRouter */}
       <Routes>
         <Route path="/" element={<Box />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
