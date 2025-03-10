@@ -1,15 +1,16 @@
-import { HashRouter, Routes, Route } from 'react-router-dom'; // ✅ Change to HashRouter
-import { Box } from './pages/index'; 
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Box } from "./pages/index"; // ✅ Your main page
 
-function App() {
+const App = () => {
   return (
-    <HashRouter> {/* ✅ Change from BrowserRouter */}
+    <Router basename="/portfolio"> {/* ✅ Fix: Tell React Router about GitHub Pages' subdirectory */}
       <Routes>
-        <Route path="/" element={<Box />} />
+        <Route path="/" element={<Box />} /> {/* ✅ This now correctly loads at /portfolio/ */}
+        {/* Future pages can be added here */}
       </Routes>
-    </HashRouter>
+    </Router>
   );
-}
+};
 
 export default App;

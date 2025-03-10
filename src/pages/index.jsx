@@ -8,6 +8,26 @@ const transition = { duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] };
 const fadeTransition = { duration: 0.5, ease: "easeOut" };
 const clickTransition = { duration: 1.2, ease: [0.25, 1, 0.5, 1] };
 
+const NavBar = ({ show }) => {
+    return (
+        <motion.div
+            className="nav-bar"
+            initial={{ x: "100vw", opacity: 0 }}
+            animate={show ? { x: 0, opacity: 1 } : {}}
+            transition={{ duration: 1.2, ease: "easeOut", delay: 0.25 }}
+        >
+            <div className="nav-text-container">
+                <div className="nav-flex">
+                    <span className="nav-text">aBout</span>
+                    <span className="nav-text">ProjecTs</span>
+                    <span className="nav-text">ContacT</span>
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
+
 // Typing Effect Component
 export function TypingEffect({ text = "Joshua Levano" }) {
     const ref = useRef(null);
@@ -20,7 +40,7 @@ export function TypingEffect({ text = "Joshua Levano" }) {
             style={{ 
                 fontFamily: '"Major Mono Display", monospace', 
                 color: "#000000", 
-                fontSize: "135px", /* 🔹 Adjust font size directly */
+                fontSize: "135px", 
                 lineHeight: "1.1",
                 textAlign: "center"
             }}
@@ -33,7 +53,7 @@ export function TypingEffect({ text = "Joshua Levano" }) {
                     transition={{ duration: 0.2, delay: index * 0.1 }}
                     style={{ 
                         fontFamily: '"Major Mono Display", monospace', 
-                        fontSize: "inherit", /* 🔹 Ensure spans inherit size */
+                        fontSize: "inherit",
                         color: "#000000",
                         display: "inline-block"
                     }}
@@ -45,13 +65,13 @@ export function TypingEffect({ text = "Joshua Levano" }) {
     );
 }
 
-
 export const Box = () => {
     const imageRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
     const [isFadingOut, setIsFadingOut] = useState(false);
     const [showTitle, setShowTitle] = useState(false);
+    const [showNavBar, setShowNavBar] = useState(false);
     const [initialSize, setInitialSize] = useState({ width: 0, height: 0, top: 0, left: 0 });
 
     const handleClick = () => {
@@ -68,10 +88,15 @@ export const Box = () => {
             }
             setIsClicked(true);
 
-            // Delay the title fade-in until the image transition completes
+            // Step 2: Show the title after image transition
             setTimeout(() => {
                 setShowTitle(true);
             }, 1200);
+
+            // Step 3: Show the NavBar after the text animation
+            setTimeout(() => {
+                setShowNavBar(true);
+            }, 2000);
         }, 500);
     };
 
@@ -79,6 +104,7 @@ export const Box = () => {
         setIsClicked(false);
         setIsFadingOut(false);
         setShowTitle(false);
+        setShowNavBar(false);
     };
 
     return (
@@ -163,6 +189,9 @@ export const Box = () => {
 
             {/* Title Label (Typing Effect) - Appears After Image Transition */}
             {showTitle && <TypingEffect text="Joshua Levano" />}
+
+            {/* ✅ NavBar appears last after text animation */}
+            {showNavBar && <NavBar show={showNavBar} />}
         </div>
     );
 };

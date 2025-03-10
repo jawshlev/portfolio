@@ -93,9 +93,9 @@
 
 .box .text-wrapper-container {
     position: absolute;
-    top: 425px; /* Move text upward */
-    left: 62px; /* Move text to the right */
-    transform-origin: top left;
+    bottom: -2%; /* Moves it closer to the bottom */
+    left: 10%; /* Moves it closer to the left */
+    transform-origin: bottom left;
 }
 
 
@@ -127,16 +127,117 @@
     }
 }
 
+/* 🔹 NAV BAR - Adjusted Opacity */
+.nav-bar {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.65) 0%, /* Set to 65% opacity */
+        rgba(206, 206, 206, 0.65) 100%
+    );
+    border-radius: 1000px 0px 0px 182.5px;
+    height: 240px;
+    width: 340px;
+    position: fixed;
+    top: 1vh; /* Adjusted for responsiveness */
+    right: 0px; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 10px;
+}
+
+/* Ensures text is aligned to the right */
+.nav-text-container {
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Aligns text EXTREMELY close to the right edge */
+.nav-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    margin-right: 0px;
+}
+
+/* Moves text almost touching the right side & ensures full opacity */
+.nav-text {
+    font-family: "Major Mono Display", monospace;
+    font-size: 34px;
+    font-weight: 400;
+    color: #000000;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-align: right;
+    margin-right: 0px;
+    opacity: 1; /* Ensures text is fully visible */
+}
+
+
+/* 🔹 TITLE LABEL - Reduce font size dynamically */
 .label {
     height: auto; /* Adjust height dynamically */
     width: 100%;
     position: fixed;
-    top: 30%; /* Move it lower (adjust this if needed) */
+    top: 30%; /* Adjust placement */
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
+    font-size: 135px; /* Default for large screens */
 }
 
+/* 🟢 Responsive Adjustments */
+@media screen and (max-width: 1024px) {
+    .nav-bar {
+        height: 220px;
+        width: 320px;
+        top: 3vh;
+    }
+
+    .nav-text {
+        font-size: 30px;
+    }
+
+    .label {
+        font-size: 120px; /* Reduce by ~12% */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-bar {
+        height: 200px;
+        width: 300px;
+        top: 4vh;
+    }
+
+    .nav-text {
+        font-size: 28px;
+    }
+
+    .label {
+        font-size: 100px; /* Reduce by ~15% */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-bar {
+        height: 180px;
+        width: 280px;
+        top: 5vh;
+    }
+
+    .nav-text {
+        font-size: 24px;
+    }
+
+    .label {
+        font-size: 80px; /* Ensures first name is visible */
+    }
+}
 
 
 
