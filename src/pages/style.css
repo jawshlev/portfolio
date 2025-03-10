@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
 
 /* Global reset for more consistent sizing */
 * {
@@ -124,3 +126,20 @@
         font-size: clamp(24px, 6vw, 30px);
     }
 }
+
+.label {
+    height: auto; /* Adjust height dynamically */
+    width: 100%;
+    position: fixed;
+    top: 30%; /* Move it lower (adjust this if needed) */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+
+
+
+
+
+
