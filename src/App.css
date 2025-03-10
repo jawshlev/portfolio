@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;600;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
 
 * {
   box-sizing: border-box;
@@ -15,243 +14,38 @@ body {
   overflow-x: hidden;
 }
 
-.no-scroll {
-  overflow: hidden;
-}
-
-.container {
-  width: 1560px;
-  min-width: 1560px;
-  margin: 0 auto;
-  height: 100%;
-}
-
-.container .row {
-  display: flex;
-  height: 100%;
-  padding: 0 32px;
-}
-
-.container .row.center {
-  align-items: center;
-  justify-content: center;
-}
-
-.container .row.space-between {
-  justify-content: space-between;
-}
-
-/* Header styles */
-header {
-  height: 100px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  z-index: 10;
-}
-
-header .logo,
-header .menu {
-  font-size: 1.2rem;
-  font-weight: 800;
-  margin-top: 40px;
-}
-
-header a {
-  color: #000;
-  text-decoration: none;
-}
-
-/* Home page styles */
-.image-container {
-  position: relative;
-  margin-top: 120px;
-}
-
-.thumbnail {
-  overflow: hidden;
-  position: relative;
-}
-
-.frame {
-  overflow: hidden;
-}
-
-.frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.information {
-  position: absolute;
-  bottom: -120px;
-  left: 0;
-  margin-top: 16px;
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-.title {
-  font-size: 1.8rem;
-  margin-bottom: 8px;
-}
-
-.location {
-  display: flex;
-}
-
-.location span:nth-child(1) {
-  margin-right: 8px;
-}
-
-/* Model page styles */
-.single {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.single .fluid {
-  position: relative;
-  padding: 0;
-}
-
-.top-row {
-  height: 50vh;
-  position: relative;
-}
-
-.top {
-  padding-top: 100px;
-  height: 100%;
-  width: 100%;
+/* Center Box component */
+.box {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  background-color: #f5f5f5; /* Adjust background color as needed */
 }
 
-.top .details {
-  position: absolute;
-  left: 32px;
-  font-size: 1.2rem;
-}
-
-.top .details .location {
-  margin-bottom: 8px;
-}
-
-.top .details .mua {
-  font-weight: 600;
-}
-
+/* Ensure proper sizing for animated image */
 .model {
-  font-size: 7rem;
-  font-weight: 800;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  cursor: pointer;
 }
 
-.model span {
-  display: inline-block;
-  position: relative;
-}
-
-.model span span {
-  overflow: hidden;
-  position: relative;
-}
-
-.bottom-row {
+/* Ensure clicked image smoothly expands */
+.model-clicked {
+  width: 100vw;
   height: 50vh;
-  position: relative;
-}
-
-.bottom {
-  width: 100%;
-  position: relative;
-}
-
-.image-container-single {
-  position: relative;
-  overflow: hidden;
-}
-
-.thumbnail-single {
-  position: relative;
-  overflow: hidden;
-}
-
-.frame-single {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.frame-single img {
-  width: 100%;
   object-fit: cover;
-}
-
-.scroll-for-more {
-  position: absolute;
-  bottom: 200px;
-  left: 200px;
-  z-index: 20;
-  text-align: center;
-}
-
-.scroll-for-more .icon {
-  margin-bottom: 16px;
-}
-
-.detailed-information {
-  margin-top: 200px;
-  margin-bottom: 200px;
-}
-
-.detailed-information .title {
-  font-size: 2rem;
-  line-height: 3rem;
-  font-weight: 600;
-  margin: 2rem 0;
-}
-
-.detailed-information p {
-  font-size: 1.4rem;
-  line-height: 2.2rem;
-  font-weight: 400;
-  width: 800px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transition: all 1.2s ease-in-out;
 }
 
 /* Responsive adjustments */
-@media (max-width: 1560px) {
-  .container {
-    width: 1280px;
-    min-width: 1280px;
+@media (max-width: 768px) {
+  .model {
+    max-height: 50vh;
   }
 }
-
-@media (max-width: 1366px) {
-  .container {
-    width: 1080px;
-    min-width: 1080px;
-  }
-}
-
-@media (max-width: 1080px) {
-  .container {
-    width: 100%;
-    min-width: 100%;
-  }
-  .detailed-information p {
-    width: 100%;
-  }
-}
-

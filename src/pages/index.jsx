@@ -5,29 +5,38 @@ import "./style.css";
 
 // Define transition settings
 const transition = { duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] };
+const fadeTransition = { duration: 0.5, ease: "easeOut" }; // Faster fade-out
 const clickTransition = { duration: 1.2, ease: [0.25, 1, 0.5, 1] };
 
 export const Box = () => {
     const imageRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
+    const [isFadingOut, setIsFadingOut] = useState(false);
     const [initialSize, setInitialSize] = useState({ width: 0, height: 0, top: 0, left: 0 });
 
     const handleClick = () => {
-        if (imageRef.current) {
-            const rect = imageRef.current.getBoundingClientRect();
-            setInitialSize({
-                width: rect.width,
-                height: rect.height,
-                top: rect.top,
-                left: rect.left
-            });
-        }
-        setIsClicked(true);
+        // Start fade-out animation for text
+        setIsFadingOut(true);
+
+        // Delay the image click animation by 0.5s (after text disappears)
+        setTimeout(() => {
+            if (imageRef.current) {
+                const rect = imageRef.current.getBoundingClientRect();
+                setInitialSize({
+                    width: rect.width,
+                    height: rect.height,
+                    top: rect.top,
+                    left: rect.left
+                });
+            }
+            setIsClicked(true);
+        }, 500); // Matches fadeTransition duration
     };
 
     const handleReset = () => {
         setIsClicked(false);
+        setIsFadingOut(false); // Reset text visibility on reset
     };
 
     return (
@@ -52,26 +61,26 @@ export const Box = () => {
                                         onMouseEnter={() => setIsHovered(true)}
                                         onMouseLeave={() => setIsHovered(false)}
                                         layout
+                                        initial={{ scale: 0.8 }}  // 🌟 Image starts 20% smaller
                                         animate={{ 
                                             opacity: 1, 
-                                            scale: isHovered ? 1.1 : 1
+                                            scale: isHovered ? 1.0 : 0.8 // Hover effect still grows it back
                                         }}
                                         style={{ cursor: 'pointer' }}
                                         transition={transition}
                                     />
 
-                                    {/* Text with hover animation */}
+
+                                    {/* Text with fade-out animation before image click */}
                                     <motion.div
                                         className="text-wrapper-container"
-                                        onMouseEnter={() => setIsHovered(true)}
-                                        onMouseLeave={() => setIsHovered(false)}
                                         animate={{ 
-                                            opacity: 1,
-                                            x: isHovered ? -30 : 0, 
-                                            y: isHovered ? 25 : 0,
-                                            scale: isHovered ? 1.05 : 1
+                                            opacity: isFadingOut ? 0 : 1, // Fade out before image animates
+                                            x: isHovered ? -62 : 0,  // 🌟 Shift text **40px to the right**
+                                            y: isHovered ? 50 : 0,  // 🌟 Move text **30px upward**
+                                            scale: isHovered ? 1.25 : 1
                                         }}
-                                        transition={transition}
+                                        transition={isFadingOut ? fadeTransition : transition}
                                     >
                                         <div className="text-wrapper">Joshua Levano</div>
                                     </motion.div>

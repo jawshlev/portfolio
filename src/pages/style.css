@@ -91,15 +91,16 @@
 
 .box .text-wrapper-container {
     position: absolute;
-    top: 100%; /* Position it below the image */
-    left: 0;
+    top: 425px; /* Move text upward */
+    left: 62px; /* Move text to the right */
     transform-origin: top left;
 }
+
 
 .box .text-wrapper {
     color: #000000;
     font-family: "Libre Barcode 39 Text", Helvetica;
-    font-size: clamp(30px, 5vw, 59.1px);
+    font-size: clamp(30px, 5vw, 45px);
     font-weight: 400;
     letter-spacing: 0;
     line-height: normal;
