@@ -1,13 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Box } from "./pages/index"; // ✅ Your main page
+import Home from "./pages/index"; // Updated to Home component
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
 
 const App = () => {
   return (
-    <Router basename="/portfolio"> {/* ✅ Fix: Tell React Router about GitHub Pages' subdirectory */}
+    <Router basename="/portfolio">
       <Routes>
-        <Route path="/" element={<Box />} /> {/* ✅ This now correctly loads at /portfolio/ */}
-        {/* Future pages can be added here */}
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   );

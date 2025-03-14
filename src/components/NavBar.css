@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+/* 🔹 NAV BAR - Keep Hover Shape Inside */
+.nav-bar {
+    background: rgba(255, 255, 255, 1);
+    border-radius: 1000px 0px 0px 182.5px;
+    height: 50vh;
+    width: 35vw;
+    position: fixed;
+    top: 0px; 
+    right: 0px; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 97; 
+    overflow: hidden; /* Prevents the rectangle from leaving the nav bar */
+}
+
+/* 🔹 Cursor-Following Rectangle - Locked Inside Nav Bar */
+.nav-hover-rectangle {
+    position: absolute; /* Ensures it stays inside nav-bar */
+    width: 35vw; /* Rectangle width */
+    height: 20vh; /* Rectangle height */
+    background: #717171;
+    border-radius: 0%; /* Turns into a rectangle */
+    z-index: 96; /* Below text but above nav bar background */
+    pointer-events: none;
+    opacity: 0;
+    transform-origin: center;
+    transition: opacity 0.1s ease-in-out, transform 0.3s ease-out;
+}
+
+/* 🔹 Make the rectangle visible inside the nav bar */
+.nav-hover-rectangle.visible {
+    opacity: 1;
+}
+
+/* 🔹 NAV TEXT - Proper Font & Hover Growth */
+.nav-item {
+    font-family: "Major Mono Display", monospace;
+    font-size: 55px;
+    font-weight: 400;
+    color: #000000;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-align: right;
+    padding: auto;
+    transition: transform 0.3s ease-in-out;
+    z-index: 99; /* Ensuring text is always on top */
+    overflow: hidden;
+}
+
+.nav-item:hover {
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+/* Aligns text EXTREMELY close to the right edge */
+.nav-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2vh;
+    margin-right: 2vw;
+}
+
+@media screen and (max-width: 1320px) {
+    .nav-bar {
+        height: 50vh;
+        width: 30vw;
+    }
+
+    .nav-item {
+        font-size: 32px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .nav-bar {
+        height: 50vh;
+        width: 25vw;
+    }
+
+    .nav-item {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-bar {
+        height: 50vh;
+        width: 25vw;
+    }
+
+    .nav-item {
+        font-size: 24px;
+        
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .nav-bar {
+        height: 50vh;
+        width: 280px;
+        top: 5vh;
+    }
+
+    .nav-text {
+        font-size: 24px;
+    }
+    
+
+}

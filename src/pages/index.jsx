@@ -1,69 +1,27 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import { Link } from "react-router-dom";
 import model from '../assets/image.png';
+import About from "./About"; // Import About Section
+import NavBar from "../components/NavBar"; // Import NavBar Component
+import TypingEffect from "../components/TypingEffect"; // Import TypingEffect Component
 import "./style.css";
 
 // Define transition settings
 const transition = { duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] };
 const fadeTransition = { duration: 0.5, ease: "easeOut" };
-const clickTransition = { duration: 1.2, ease: [0.25, 1, 0.5, 1] };
+const clickTransition = { duration: 1.2, ease: [0.5, 1, 0.5, 1] };
 
-const NavBar = ({ show }) => {
+// ✅ Parent container for scrolling sections
+const Home = () => {
     return (
-        <motion.div
-            className="nav-bar"
-            initial={{ x: "100vw", opacity: 0 }}
-            animate={show ? { x: 0, opacity: 1 } : {}}
-            transition={{ duration: 1.2, ease: "easeOut", delay: 0.25 }}
-        >
-            <div className="nav-text-container">
-                <div className="nav-flex">
-                    <span className="nav-text">aBout</span>
-                    <span className="nav-text">ProjecTs</span>
-                    <span className="nav-text">ContacT</span>
-                </div>
-            </div>
-        </motion.div>
+        <div className="parent-container">
+                <Box />
+                <About />
+        </div>
     );
 };
 
-
-// Typing Effect Component
-export function TypingEffect({ text = "Joshua Levano" }) {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
-
-    return (
-        <h2 
-            ref={ref} 
-            className="label text-wrapper"
-            style={{ 
-                fontFamily: '"Major Mono Display", monospace', 
-                color: "#000000", 
-                fontSize: "135px", 
-                lineHeight: "1.1",
-                textAlign: "center"
-            }}
-        >
-            {text.split("").map((letter, index) => (
-                <motion.span
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.2, delay: index * 0.1 }}
-                    style={{ 
-                        fontFamily: '"Major Mono Display", monospace', 
-                        fontSize: "inherit",
-                        color: "#000000",
-                        display: "inline-block"
-                    }}
-                >
-                    {letter}
-                </motion.span>
-            ))}
-        </h2>
-    );
-}
 
 export const Box = () => {
     const imageRef = useRef(null);
@@ -142,11 +100,12 @@ export const Box = () => {
                                         className="text-wrapper-container"
                                         animate={{ 
                                             opacity: isFadingOut ? 0 : 1, 
-                                            x: isHovered ? -62 : 0,  
+                                            x: isHovered ? -30 : 0,  
                                             y: isHovered ? 50 : 0,  
                                             scale: isHovered ? 1.25 : 1
                                         }}
                                         transition={isFadingOut ? fadeTransition : transition}
+                                        style={{ position: 'absolute' }}
                                     >
                                         <div className="text-wrapper">Joshua Levano</div>
                                     </motion.div>
@@ -161,22 +120,22 @@ export const Box = () => {
                                         initial={{ 
                                             width: initialSize.width, 
                                             height: initialSize.height, 
-                                            top: initialSize.top, 
-                                            left: initialSize.left,
+                                            top: "0%", 
+                                            left: "0%",
                                             opacity: 1
                                         }}
                                         animate={{ 
                                             width: "100vw", 
                                             height: "50vh",
-                                            top: "50vh",  
-                                            left: "0",  
+                                            top: "25vh",  
+                                            left: "0%",  
                                             opacity: 1
                                         }}
                                         style={{ 
                                             cursor: 'pointer',
                                             objectFit: 'cover',
-                                            objectPosition: 'center 65%',
-                                            position: "fixed"
+                                            objectPosition: 'center 50%',
+                                            position: "absolute"
                                         }}
                                         transition={clickTransition}
                                     />
@@ -188,10 +147,13 @@ export const Box = () => {
             </div>
 
             {/* Title Label (Typing Effect) - Appears After Image Transition */}
-            {showTitle && <TypingEffect text="Joshua Levano" />}
+            {showTitle && <TypingEffect text="Joshua 
+            Levano" />}
 
             {/* ✅ NavBar appears last after text animation */}
             {showNavBar && <NavBar show={showNavBar} />}
         </div>
     );
 };
+
+export default Home;
