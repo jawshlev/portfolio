@@ -12,9 +12,10 @@
 /* Ensure the parent container stacks sections vertically */
 .parent-container {
     display: flex;
+    position: relative; /* ✅ Required for useScroll() */
     flex-direction: column;
     width: 100vw;
-    height: 200vh; /* Double height for two full-screen sections */
+    height: 300vh; /* Double height for two full-screen sections */
 }
 
 /* Each section takes full viewport height */
@@ -102,10 +103,13 @@
 .label {
     height: auto;
     max-width: 80%;
-    position: absolute; /* Ensures it stays in the Box */
+    position: relative; /* Ensures it stays in the Box */
     top: 0%;
     left: 0%;
-    text-align: center;
+    display: flex;
+    flex-direction: column; /* ✅ Stack text vertically */
+    gap: 10px; /* ✅ Adjust spacing between lines */
+    text-align: left;
     font-size: 200px;
     line-height: 0.85;
 }
@@ -178,9 +182,9 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    position: sticky;
+    top: 0%;
+    overflow: hidden;
     background: linear-gradient(180deg, rgb(142, 158, 171) 0%, rgb(238, 242, 243) 100%);
     z-index: 100;
 }
@@ -222,4 +226,55 @@
     height: 100vh;
 }
 
+/* Fix About section content */
+.about-container {
+    position: relative; /* Keeps all elements inside */
+    width: 100%;
+    height: 100%;
+}
 
+/* Remove position: fixed and use absolute for contained movement */
+.aboutMe {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: auto;
+    height: auto;
+    max-height: 100vh;
+}
+
+.aboutTitle {
+    position: absolute;
+    top: 2%;
+    right: 40%;
+    max-width: 30vw;
+    width: auto;
+    height: auto;
+}
+
+.aboutTitleText {
+    position: absolute;
+    top: 13%;
+    left: 35%;
+    font-family: "Major Mono Display", monospace;
+    text-shadow: 2px 2px 3px #000000;
+    color: #000;
+    font-size: clamp(10vh, 10vw, 10vh);
+}
+
+/* Keep About Card inside the section */
+.aboutCard {
+    position: absolute;
+    bottom: 0%;
+    right: 2%;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+}
+.projects-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background: linear-gradient(180deg, rgb(142, 158, 171) 0%, rgb(238, 242, 243) 100%);
+    z-index: 100;
+}

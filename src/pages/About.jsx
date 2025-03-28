@@ -1,41 +1,26 @@
 'use client';
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useTransform} from "framer-motion";
+import aboutMe from '../assets/AboutMe.png';
+import aboutTitle from '../assets/AboutTitleBg.png';
+import aboutCard from '../assets/AboutCardBg.png';
 import "./style.css"; // Import styles
 
-const About = () => {
-  const [animationStage, setAnimationStage] = useState("hidden");
+const About = ({scrollYProgress}) => {
 
-  useEffect(() => {
-    const blurInTimer = setTimeout(() => {
-      setAnimationStage("visible");
-    }, 1000);
+  const rotate = useTransform(scrollYProgress, [0.45, 0.6], [0, 3]); 
+  const scale = useTransform(scrollYProgress, [0.45, 0.6], [1, 0.95]);  
 
-    const blurOutTimer = setTimeout(() => {
-      setAnimationStage("hidden");
-    }, 4000);
-
-    return () => {
-      clearTimeout(blurInTimer);
-      clearTimeout(blurOutTimer);
-    };
-  }, []);
-
-  return (
-    <div className="page-container">
-      {/* Animated About Me Text */}
-      <motion.h1
-        initial={{ filter: "blur(20px)", opacity: 0 }}
-        animate={
-          animationStage === "visible"
-            ? { filter: "blur(0px)", opacity: 1 }
-            : { filter: "blur(20px)", opacity: 0 }
-        }
-        transition={{ duration: 1.2 }}
-      >
-        About Me
-      </motion.h1>
-    </div>
+  return (  
+    <motion.div style={{scale, rotate}}className="page-container">
+      <div className="about-container">
+          <img className="aboutMe" alt="About Me" src={aboutMe} />
+          <img className="aboutTitle" alt="Title" src={aboutTitle} />
+          <img className="aboutCard" alt="Card" src={aboutCard} />
+          <div className="aboutTitleText">About</div>
+      </div>
+    </motion.div>
+    
   );
 };
 

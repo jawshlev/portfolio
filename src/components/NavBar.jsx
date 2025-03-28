@@ -31,6 +31,26 @@ const NavBar = ({ show }) => {
         };
     }, [hovering]);
 
+    // Get the border radius based on normalized Y position
+    const getBorderRadius = () => {
+        if (!hovering) {
+            return "1000px 0px 0px 182.5px"; // Default when not hovering
+        }
+
+        // Normalize cursor Y position to a range [0, 1]
+        const normalizedY = cursorY / (navBarRef.current?.clientHeight || 1);
+
+        // Determine which state to use based on normalizedY
+        if (normalizedY <= 0.35) {
+            return "182.5px 0px 0px 1000px"; // Top section
+        } else if (normalizedY <= 0.65) {
+            return "500px 0px 0px 500px"; // Middle section
+        } else {
+            return "1000px 0px 0px 182.5px"; // Bottom section
+        }
+    };
+
+
     return (
         <motion.div
             ref={navBarRef}
@@ -40,6 +60,10 @@ const NavBar = ({ show }) => {
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.25 }}
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
+            style={{
+                borderRadius: getBorderRadius(),
+                transition: "border-radius 0.5s ease-in-out", // Smooth transition
+            }}
         >
             <div 
                 className={`nav-hover-rectangle ${hovering ? "visible" : ""}`} 

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import "../pages/style.css"; // Ensure styles are applied
 
-const TypingEffect = ({ text = "Joshua Levano" }) => {
+const TypingEffect = ({ text = "" }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
 
@@ -15,7 +15,7 @@ const TypingEffect = ({ text = "Joshua Levano" }) => {
                             key={`${lineIndex}-${index}`}
                             initial={{ opacity: 0 }}
                             animate={isInView ? { opacity: 1 } : {}}
-                            transition={{ duration: 0.2, delay: (lineIndex * 5 + index) * 0.1 }}
+                            transition={{ duration: 0.2, delay: (lineIndex * 5 + index) * 0.3 }}
                             style={{ display: "inline-block" }}
                         >
                             {letter}
