@@ -15,7 +15,7 @@
     position: relative; /* ✅ Required for useScroll() */
     flex-direction: column;
     width: 100vw;
-    height: 300vh; /* Double height for two full-screen sections */
+    height: 200vh; /* Double height for two full-screen sections */
 }
 
 /* Each section takes full viewport height */
@@ -36,7 +36,7 @@
     position: sticky; /* Ensures children are contained */
     top: 0;
     overflow: hidden; /* Prevents content from spilling */
-    z-index: 1;
+    z-index: 100;
 }
 
 
@@ -75,8 +75,8 @@
 
 .text-wrapper-container {
     position: fixed; /* ✅ Allows free positioning */
-    right: 50%;
-    top: 75%;
+    right: 52vw;
+    top: 75vh;
     z-index: 10; /* ✅ Ensures it stays above the image */
 }
 
@@ -90,7 +90,6 @@
     padding: 0.2rem 1rem; /* ✅ Adds slight padding for better positioning */
 }
 
-/* ✅ Fix model image position */
 .box .model {
     display: block;
     max-width: 100%;
@@ -99,22 +98,20 @@
     max-height: 62.5vh;
 }
 
-/* ✅ Fix .label so it doesn’t follow scroll */
 .label {
     height: auto;
     max-width: 80%;
     position: relative; /* Ensures it stays in the Box */
-    top: 0%;
-    left: 0%;
+    top: 70vh;
+    left: 5vw;
     display: flex;
-    flex-direction: column; /* ✅ Stack text vertically */
     gap: 10px; /* ✅ Adjust spacing between lines */
     text-align: left;
-    font-size: 200px;
+    font-size: 60px;
     line-height: 0.85;
+    z-index: 100;
 }
 
-/* Keep clicked image inside */
 /* Keep clicked image inside */
 .clicked-container {
     position: absolute; /* ✅ Ensures it stays inside .box */
@@ -124,32 +121,18 @@
 }
 
 /* Ensure clicked image remains inside the .box */
-.box .model-clicked {
-    position: absolute; /* ✅ Change from fixed */
-    object-position: center 65%;
-    z-index: 100;
-    width: auto;
-    height: auto;
-    max-width: 100vw;
-    max-height: 50vh;
-    /* left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 1.2s ease-in-out, width 1.2s ease-in-out, height 1.2s ease-in-out; */
-}
+
 
 
 /* Ensure clicked image remains inside */
 .box .model-clicked {
     position: absolute; /* Change from fixed */
     object-fit: cover;
-    object-position: center 65%;
     z-index: 100;
     width: auto;
     height: auto;
     max-width: 100vw;
-    max-height: 50vh;
-    left: 50%;
-    top: 50%;
+    max-height: 100vh;
     transform: translate(-50%, -50%);
     transition: transform 1.2s ease-in-out, width 1.2s ease-in-out, height 1.2s ease-in-out;
 }
@@ -189,42 +172,6 @@
     z-index: 100;
 }
 
-/* Keep black bars inside sections */
-.blackbar1 {
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    background-color: #000000;
-    width: 10vw;
-    height: 100vh;
-}
-
-.blackbar2 {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    background-color: #000000;
-    width: 100vw;
-    height: 2vh;
-}
-
-.blackbar3 {
-    position: absolute;
-    bottom: 0%;
-    left: 0%;
-    background-color: #000000;
-    width: 100vw;
-    height: 2vh;
-}
-
-.blackbar4 {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    background-color: #000;
-    width: 10vw;
-    height: 100vh;
-}
 
 /* Fix About section content */
 .about-container {
@@ -270,7 +217,9 @@
     max-height: 90vh;
     width: auto;
     height: auto;
+    z-index: -1;
 }
+
 .projects-page {
     width: 100vw;
     height: 100vh;
@@ -278,3 +227,23 @@
     background: linear-gradient(180deg, rgb(142, 158, 171) 0%, rgb(238, 242, 243) 100%);
     z-index: 100;
 }
+.projects-main{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.projects-body{
+    width: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.projects-header {
+    font-size: 8vh;
+    font-weight: 400;
+    margin: 4vh 0 4vh 0vh;
+  }

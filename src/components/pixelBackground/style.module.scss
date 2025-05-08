@@ -1,0 +1,23 @@
+.pixelBackground{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    .column{
+        width: 5vw;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        .block{
+            width: 100%;
+            height: 5vw;
+            background-color: #FFFFFF;
+        }
+    }
+}
+.pixelBackground.menuActive {
+    pointer-events: auto; // 👈 only allow interaction when menu is active
+  }

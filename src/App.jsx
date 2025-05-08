@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/index"; // Updated to Home component
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import NavBar from "./components/NavBar"; // or wherever it's located
 
 const App = () => {
   return (

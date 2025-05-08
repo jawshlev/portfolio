@@ -1,0 +1,38 @@
+.modalContainer {
+    width: 40vw;             /* responsive width */
+    height: 40vh;
+    overflow: hidden;           /* 👈 KEY: hide the rest */
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 30vh;
+    left: 77vw;
+    z-index: 200;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .modalSlider {
+    display: flex;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1); /* smooth natural easing */
+    will-change: transform;
+  }
+  
+  .modal {
+    width: 40vw;               /* fixed size per image */
+    height: 100%;
+    flex-shrink: 0;             /* prevents resizing */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .modalimg {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  

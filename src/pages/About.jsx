@@ -5,20 +5,28 @@ import aboutMe from '../assets/AboutMe.png';
 import aboutTitle from '../assets/AboutTitleBg.png';
 import aboutCard from '../assets/AboutCardBg.png';
 import "./style.css"; // Import styles
+import Header from '../components/header';
+import Menu from '../components/menu';
+import PixelBackground from '../components/pixelBackground';
 
-const About = ({scrollYProgress}) => {
 
-  const rotate = useTransform(scrollYProgress, [0.45, 0.6], [0, 3]); 
-  const scale = useTransform(scrollYProgress, [0.45, 0.6], [1, 0.95]);  
+const About = ({ scrollYProgress, menuIsActive, setMenuIsActive }) => {
 
-  return (  
+  const scale = useTransform(scrollYProgress, [0.65, 1], [0.90, 1]);
+  const rotate = useTransform(scrollYProgress, [0.75, 1], [2, 0]);
+
+  return (
+  
     <motion.div style={{scale, rotate}}className="page-container">
-      <div className="about-container">
+      <Header menuIsActive={menuIsActive} setMenuIsActive={setMenuIsActive}/>
+      <Menu menuIsActive={menuIsActive} setMenuIsActive={setMenuIsActive} />
+      <PixelBackground menuIsActive={menuIsActive}/> <PixelBackground/>
+        <div className="about-container">
           <img className="aboutMe" alt="About Me" src={aboutMe} />
           <img className="aboutTitle" alt="Title" src={aboutTitle} />
           <img className="aboutCard" alt="Card" src={aboutCard} />
           <div className="aboutTitleText">About</div>
-      </div>
+        </div>
     </motion.div>
     
   );

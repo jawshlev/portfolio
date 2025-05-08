@@ -7,7 +7,7 @@ const TypingEffect = ({ text = "" }) => {
     const isInView = useInView(ref, { once: true });
 
     return (
-        <h2 ref={ref} className="label" style={{ fontFamily: '"Major Mono Display", monospace', color: "#000000" }}>
+        <h2 ref={ref} className="label" style={{ fontFamily: '"Major Mono Display", monospace', color: "#FFFFFF" }}>
             {text.split("\n").map((line, lineIndex) => (
                 <span key={lineIndex} style={{ display: "block" }}>
                     {line.split("").map((letter, index) => (

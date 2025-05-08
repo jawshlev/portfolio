@@ -1,0 +1,57 @@
+.project{
+    display: flex;
+    flex-direction: column; /* ✅ stack children vertically */
+    align-items: flex-start;
+    width: 100%;
+    align-items: center;
+    text-align: left;
+    padding: 3vh 12vh 3vh 12vh;
+    border-top: 1px solid rgb(255, 255, 255);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+
+.project:hover{
+    opacity: 0.75;
+}
+
+.project:hover h2{
+    transform: translateX(-1vh);
+}
+
+.project:hover p{
+    transform: translateX(1vh);
+}
+
+.project h2{
+    font-size: 6vh;
+    margin: 0px;
+    font-weight: 400;
+    transition: all 0.4s;
+}
+.project h2 {
+    margin-bottom: 0.5rem; /* ✅ this adds space below the title */
+  }
+  
+  .subtext {
+    font-size: 0.95rem;
+    color: inherit;
+  }
+.project h1{
+    font-size: 8vh;
+    margin: 0px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.projectLinkWrapper {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .projectLinkWrapper * {
+    color: inherit; /* ✅ make all children match parent color */
+  }
